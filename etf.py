@@ -64,3 +64,110 @@ st.write("Optimal ETF Allocation Weights:")
 for symbol, weight in zip(symbols, optimal_weights):
     if weight[0] != 0:
         st.write(f"{symbol}: {weight[0]:.4f}")
+
+
+
+
+# Create a list of dictionaries with asset information
+assets_data = [
+    {
+        "Attributes": "US Stocks",
+        "About": "US Stocks represent an ownership share in US-based corporations. The US has the largest economy and stock market in the world. Although the US economy was hit hard in the 2008-2009 Financial Crisis, it is still one of the most resilient and active in the world because it is powered by a remarkable innovation engine.",
+        "Ticker": "VTI",
+        "Total Name": "Vanguard Total Stock Market ETF"
+    },
+    {
+        "Attributes": "US Stocks",
+        "About": "US Stocks represent an ownership share in US-based corporations. The US has the largest economy and stock market in the world. Although the US economy was hit hard in the 2008-2009 Financial Crisis, it is still one of the most resilient and active in the world because it is powered by a remarkable innovation engine.",
+        "Ticker": "ITOT",
+        "Total Name": "iShares Core S&P Total U.S. Stock Market ETF"
+    },
+    {
+        "Attributes": "Foreign Stocks",
+        "About": "Foreign Developed Market Stocks represent an ownership share in companies headquartered in developed economies like Europe, Australia, and Japan. Although the economies of Europe and Japan have experienced some struggles in the last few decades, Foreign Developed Markets represent a significant part of the world economy and provide diversification from US Stocks.",
+        "Ticker": "VEA",
+        "Total Name": "Vanguard FTSE Developed Markets ETF"
+    },
+    {
+        "Attributes": "Foreign Stocks",
+        "About": "Foreign Developed Market Stocks represent an ownership share in companies headquartered in developed economies like Europe, Australia, and Japan. Although the economies of Europe and Japan have experienced some struggles in the last few decades, Foreign Developed Markets represent a significant part of the world economy and provide diversification from US Stocks.",
+        "Ticker": "SCHF",
+        "Total Name": "Schwab International Equity ETF"
+    },
+    {
+        "Attributes": "Emerging Markets",
+        "About": "Emerging Market Stocks represent an ownership share in foreign companies in developing economies such as Brazil, China, India, South Africa, and Taiwan. Compared with developed countries, developing countries have younger demographics, expanding middle classes and faster economic growth. They account for half of world GDP, and that portion is likely to increase as the Emerging Markets develop. Emerging Market Stocks are more volatile, but have historically delivered higher returns than US Stocks and Foreign Developed Markets Stocks.",
+        "Ticker": "VWO",
+        "Total Name": "Vanguard FTSE Emerging Markets ETF"
+    },
+    {
+        "Attributes": "Emerging Markets",
+        "About": "Emerging Market Stocks represent an ownership share in foreign companies in developing economies such as Brazil, China, India, South Africa, and Taiwan. Compared with developed countries, developing countries have younger demographics, expanding middle classes and faster economic growth. They account for half of world GDP, and that portion is likely to increase as the Emerging Markets develop. Emerging Market Stocks are more volatile, but have historically delivered higher returns than US Stocks and Foreign Developed Markets Stocks.",
+        "Ticker": "IEMG",
+        "Total Name": "iShares Core MSCI Emerging Markets ETF"
+    },
+    {
+        "Attributes": "Dividend Stocks",
+        "About": "Dividend Growth Stocks represent an ownership share in US companies that have increased their dividend payout each year for the last ten or more consecutive years. They tend to be large-cap well-run companies in less cyclical industries and thus are less volatile than stocks more generally. Many companies in this asset class have higher dividend yields than their corporate bond yields and the yields on US government bonds.",
+        "Ticker": "VIG",
+        "Total Name": "Vanguard Dividend Appreciation ETF"
+    },
+    {
+        "Attributes": "Dividend Stocks",
+        "About": "Dividend Growth Stocks represent an ownership share in US companies that have increased their dividend payout each year for the last ten or more consecutive years. They tend to be large-cap well-run companies in less cyclical industries and thus are less volatile than stocks more generally. Many companies in this asset class have higher dividend yields than their corporate bond yields and the yields on US government bonds.",
+        "Ticker": "DGRO",
+        "Total Name": "iShares Core Dividend Growth ETF"
+    },
+    {
+        "Attributes": "Municipal Bonds",
+        "About": "Municipal Bonds are debt issued by U.S. state and local governments. Unlike most other bonds, Municipal Bonds’ interest is exempt from federal income taxes. They provide individual investors in high tax brackets a tax efficient way to obtain income, low historical volatility, and diversification.",
+        "Ticker": "VTEB",
+        "Total Name": "Vanguard Tax-Exempt Bond ETF"
+    },
+    {
+        "Attributes": "Municipal Bonds",
+        "About": "Municipal Bonds are debt issued by U.S. state and local governments. Unlike most other bonds, Municipal Bonds’ interest is exempt from federal income taxes. They provide individual investors in high tax brackets a tax efficient way to obtain income, low historical volatility, and diversification.",
+        "Ticker": "MUB",
+        "Total Name": "iShares National Muni Bond ETF"
+    },
+    {
+        "Attributes": "US Bonds",
+        "About": "US Bonds are high-quality debt issued by the US Treasury, government agencies, and US corporations. US Bonds provide steady income, low historical volatility and low correlation with stocks.",
+        "Ticker": "BND",
+        "Total Name": "Vanguard Total Bond Market ETF"
+    },
+    {
+        "Attributes": "US Bonds",
+        "About": "US Bonds are high-quality debt issued by the US Treasury, government agencies, and US corporations. US Bonds provide steady income, low historical volatility and low correlation with stocks.",
+        "Ticker": "BIV",
+        "Total Name": "Vanguard Intermediate-Term Bond ETF"
+    },
+    {
+        "Attributes": "Corporate Bonds",
+        "About": "Corporate Bonds are debt issued by US corporations with investment-grade credit ratings to fund business activities. Compared to US Bonds, which contain large amounts of bonds issued by the US government and government agencies, corporate bonds offer higher yields due to higher credit risk, illiquidity, and callability.",
+        "Ticker": "VCIT",
+        "Total Name": "Vanguard Intermediate-Term Corporate Bond ETF"
+    },
+    {
+        "Attributes": "TIPS",
+        "About": "Treasury Inflation-Protected Securities (TIPS) are inflation-indexed bonds issued by the U.S. federal government. Unlike nominal bonds, TIPS’ principal and coupons are adjusted periodically based on the Consumer Price Index (CPI). Their inflation-indexed feature and low volatility makes them the only asset class that can provide income generation and inflation protection to risk averse investors.",
+        "Ticker": "SCHP",
+        "Total Name": "Schwab U.S. TIPS ETF"
+    },
+    {
+        "Attributes": "TIPS",
+        "About": "Treasury Inflation-Protected Securities (TIPS) are inflation-indexed bonds issued by the U.S. federal government. Unlike nominal bonds, TIPS’ principal and coupons are adjusted periodically based on the Consumer Price Index (CPI). Their inflation-indexed feature and low volatility makes them the only asset class that can provide income generation and inflation protection to risk averse investors.",
+        "Ticker": "VTIP",
+        "Total Name": "Vanguard Short-Term Inflation-Protected Securities ETF"
+    }
+]
+
+# Create a Pandas DataFrame from the list of dictionaries
+assets_df = pd.DataFrame(assets_data)
+
+# Set the Streamlit app title
+st.title("Asset Information Table")
+
+# Display the asset information table using Streamlit
+st.table(assets_df)
+
