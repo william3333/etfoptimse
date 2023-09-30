@@ -61,8 +61,5 @@ optimal_weights = np.array(optimal_weights['x'])
 
 # Display the optimal weights
 st.write("Optimal Asset Allocation Weights:")
-for i in range(num_assets):
-    st.write(f"Asset {i + 1}: {optimal_weights[i][0]:.4f}")
-
-# Optional: Plot the efficient frontier or any other visualizations
-# You can add visualization code here if needed
+for symbol, weight in zip(symbols, optimal_weights):
+    st.write(f"{symbol}: {weight[0]:.4f}")
