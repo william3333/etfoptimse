@@ -62,4 +62,5 @@ optimal_weights = np.array(optimal_weights['x'])
 # Display the optimal weights
 st.write("Optimal ETF Allocation Weights:")
 for symbol, weight in zip(symbols, optimal_weights):
-    st.write(f"{symbol}: {weight[0]:.4f}")
+    if weight[0] != 0.0000:
+        st.write(f"{symbol}: {weight[0]:.4f}")
