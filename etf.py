@@ -10,7 +10,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from datetime import datetime
-import matplotlib.pyplot as plt
 from cvxopt import matrix, solvers
 
 # Set the Streamlit app title
