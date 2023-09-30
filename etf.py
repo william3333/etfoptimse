@@ -60,6 +60,6 @@ optimal_weights = solvers.qp(P, q, G, h, A, b)
 optimal_weights = np.array(optimal_weights['x'])
 
 # Display the optimal weights
-st.write("Optimal Asset Allocation Weights:")
+st.write("Optimal ETF Allocation Weights:")
 for symbol, weight in zip(symbols, optimal_weights):
     st.write(f"{symbol}: {weight[0]:.4f}")
